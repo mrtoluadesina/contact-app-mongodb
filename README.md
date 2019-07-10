@@ -26,26 +26,26 @@ There are 6 endpoints and all are accessible from `/api/[endpoint]`
 
 ---
 
-### /contacts
+### /contacts (GET Request)
 use the `/api/contacts` endpoint to view all the contacts at once
 
 
-### /contact/:contactID
+### /contact/:contactID (GET Requeest)
 use the `/api/contact/:contactID` endpoint to view a single user at a time
 
 
-### /block/:contactID
-use the `/api/block/:contactID` endpoint to block a user
+### /contact/:contactID (POST Request)
+use the `/api/contact/:contactID` endpoint to block a user
 
 
-### /delete/:contactID
+### /contact/:contactID (DELETE Request)
 use the `/api/delete/:contactID` endpoint to delete a user
 
 
-### /add-contact
-use the `/api/add-contact` endpoint to view create a new user
+### /contacts (POST Request)
+use the `/api/contacts` endpoint to view create a new user
 
 
-### /edit/:contactID
-use the `/api/edit/:contactID` endpoint to update the details of a user
+### /contact/:contactID (PUT Request)
+use the `/api/contact/:contactID` endpoint to update the details of a user
 
