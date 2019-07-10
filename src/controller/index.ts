@@ -16,6 +16,6 @@ export function getContact(contactID: string) {
 
 export function blockContact(contactID: string) {
   const contact = getContact(contactID);
-
-  
+  contact.isblocked = true;
+  return contact
 }
