@@ -20,7 +20,7 @@ router.get('/contact/:contactID', (req, res) => {
   } catch {
     res.status(404).json({ error: 'Contact not found'});
   }
-})
+});
 
 router.post('/contact/:contactID', (req, res) => {
   try {
@@ -30,7 +30,7 @@ router.post('/contact/:contactID', (req, res) => {
   } catch {
     res.status(404).json({ error: 'no such contact'});
   }
-})
+});
 
 router.delete('/contact/:contactID', (req, res) => {
   try {
@@ -40,6 +40,6 @@ router.delete('/contact/:contactID', (req, res) => {
   } catch {
     res.status(404).json({ error: 'Contact not found' })
   }
-})
+});
 
 export default router;
