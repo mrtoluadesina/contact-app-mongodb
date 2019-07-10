@@ -19,3 +19,21 @@ export function blockContact(contactID: string) {
   contact.isblocked = true;
   return contact
 }
+
+export function deleteContact(contactID: string) {
+  const contact = getContact(contactID);
+  contacts.splice(contact, 1);
+  return contacts;
+}
+
+export function addContact(name: string, phone: string, email: string, isblocked: boolean, id: string) {
+  const contact = {
+    name,
+    phone,
+    email,
+    isblocked: false,
+    id
+  };
+  contacts.push(contact);
+  return contacts;
+}
