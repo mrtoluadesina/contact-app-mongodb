@@ -26,7 +26,7 @@ export function deleteContact(contactID: string) {
   return contacts;
 }
 
-export function addContact(name: string, phone: string, email: string, isblocked: boolean, id: string) {
+export function addContact(name: string, phone: string, email: string, _isblocked: boolean, id: string) {
   const contact = {
     name,
     phone,
@@ -36,4 +36,8 @@ export function addContact(name: string, phone: string, email: string, isblocked
   };
   contacts.push(contact);
   return contacts;
+}
+
+export function editContact(contactID: string) {
+  
 }
