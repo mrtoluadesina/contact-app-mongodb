@@ -42,4 +42,10 @@ router.delete('/contact/:contactID', (req, res) => {
   }
 });
 
+router.post('/contacts', (req, res) => {
+  const { name, phone, email, isBlocked, id } = req.body;
+  addContact(name, phone, email, isBlocked, id);
+  res.status(200).json({ message: 'Contact Created' })
+});
+
 export default router;
