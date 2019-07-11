@@ -16,7 +16,8 @@ router.get('/contact/:contactID', (req, res) => {
   try {
     const data = getContact(req.params.contactID);
 
-    res.status(200).json({ data });
+    data.isBlocked ? res.status(405).json({ message: 'Contact is blocked' }) : res.status(200).json({ data });
+    
   } catch {
     res.status(404).json({ error: 'Contact not found'});
   }
