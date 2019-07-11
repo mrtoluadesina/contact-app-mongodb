@@ -67,9 +67,30 @@ router.put("/contact/:id", (req, res) => {
 router.delete('/contact/:id', (req, res) => {
   Contact.findByIdAndDelete(req.params.id, function(_err: any, contact) {
     if (!contact) {
-      res.status(400).send('Contact not found');
+      res.status(404).send('Contact not found');
     } else {
       res.status(200).json({ message: 'Contact Deleted Successfully' });
+    }
+  })
+})
+
+router.post('/contact/:id', (req, res) => {
+  Contact.findById(req.params.id, function(_err: any, contact: any) {
+    if (!contact) {
+      res.status(400).send('Contact cannot be blocked')
+    } else {
+      if (contact.isBlocked) {
+        res.json('Contact cannot be blocked');
+      }
+      contact.isBlocked = true;
+
+      contact.save()
+            .then(() => {
+              res.status(200).json('Contact blocked successfully');
+            })
+            .catch(() => {
+              res.status(400).json('Could not be blocked');
+            })
     }
   })
 })
@@ -84,14 +105,5 @@ router.delete('/contact/:id', (req, res) => {
 //   }
 // });
 
-// router.delete('/contact/:contactID', (req, res) => {
-//   try {
-//     deleteContact(req.params.contactID);
-
-//     res.status(200).json({ message: 'Contact deleted' })
-//   } catch {
-//     res.status(404).json({ error: 'Contact not found' })
-//   }
-// });
 
 export default router;
