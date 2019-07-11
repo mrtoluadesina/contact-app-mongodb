@@ -11,6 +11,10 @@ export function getContact(contactID: string) {
     throw new Error('Contact not found');
   }
 
+  if(contact.isBlocked) {
+    return 'Contact is blocked'
+  }
+
   return contact[0];
 }
 
