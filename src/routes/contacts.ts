@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getContactList, getContact, blockContact, deleteContact, addContact } from '../controller/index';
+import { getContactList, getContact, blockContact, deleteContact, addContact, editContact } from '../controller/index';
 const router = Router();
 
 /* GET users listing. */
@@ -47,5 +47,11 @@ router.post('/contacts', (req, res) => {
   addContact(name, phone, email, isBlocked, id);
   res.status(200).json({ message: 'Contact Created' })
 });
+
+router.put('/contact/:contactID', (req, res) => {
+  const { name, phone, email, isBlocked, id } = req.body;
+  editContact(name, phone, email, isBlocked, id);
+  res.status(200).json({ message: 'Contact Edited' })
+})
 
 export default router;
