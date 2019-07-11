@@ -39,7 +39,7 @@ use the `/api/contact/:contactID` endpoint to block a user
 
 
 ### /contact/:contactID (DELETE Request)
-use the `/api/delete/:contactID` endpoint to delete a user
+use the `/api/contact/:contactID` endpoint to delete a user
 
 
 ### /contacts (POST Request)
