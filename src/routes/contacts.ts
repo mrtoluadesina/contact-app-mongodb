@@ -64,7 +64,15 @@ router.put("/contact/:id", (req, res) => {
   });
 });
 
-
+router.delete('/contact/:id', (req, res) => {
+  Contact.findByIdAndDelete(req.params.id, function(_err: any, contact) {
+    if (!contact) {
+      res.status(400).send('Contact not found');
+    } else {
+      res.status(200).json({ message: 'Contact Deleted Successfully' });
+    }
+  })
+})
 
 // router.post('/contact/:contactID', (req, res) => {
 //   try {
