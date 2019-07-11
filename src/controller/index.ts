@@ -1,3 +1,5 @@
+import { isBoolean } from "util";
+
 const contacts = require('../../db/db.json');
 
 export function getContactList() {
@@ -16,7 +18,7 @@ export function getContact(contactID: string) {
 
 export function blockContact(contactID: string) {
   const contact = getContact(contactID);
-  contact.isblocked = true;
+  contact.isBlocked = true;
   return contact
 }
 
@@ -26,18 +28,25 @@ export function deleteContact(contactID: string) {
   return contacts;
 }
 
-export function addContact(name: string, phone: string, email: string, _isblocked: boolean, id: string) {
+export function addContact(name: string, phone: string, email: string, _isBlocked: boolean, id: string) {
   const contact = {
     name,
     phone,
     email,
-    isblocked: false,
+    isBlocked: false,
     id
   };
   contacts.push(contact);
   return contacts;
 }
 
-export function editContact(contactID: string) {
-  
+export function editContact(name: string, phone: string, email: string, isBlocked: boolean, id: string) {
+  const contact = getContact(id);
+  contact.name = name;
+  contact.phone = phone;
+  contact.email = email;
+  contact.isBlocked = isBlocked;
+  contact.id = id;
+
+  return contact;
 }
