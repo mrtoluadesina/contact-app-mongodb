@@ -1,6 +1,4 @@
 import { Router } from "express";
-// import { getContactList, getContact, blockContact, deleteContact, addContact, editContact } from '../controller/index';
-
 import Contact from "../schema/contact.model";
 
 const router = Router();
@@ -16,6 +14,16 @@ router.get("/contacts", (_req, res) => {
       res.status(404).json({ err });
     } else {
       res.status(200).json(contacts);
+    }
+  });
+});
+
+router.get("/blocked", (_req, res) => {
+  Contact.find(function(err: any, contacts: any) {
+    if (err) {
+      res.status(404).json({ err });
+    } else {
+      res.status(200).json(contacts.filter((items: any) => items.isBlocked === true ))
     }
   });
 });
@@ -94,16 +102,5 @@ router.post('/contact/:id', (req, res) => {
     }
   })
 })
-
-// router.post('/contact/:contactID', (req, res) => {
-//   try {
-//     blockContact(req.params.contactID);
-
-//     res.status(200).json({ message: 'contact blocked' })
-//   } catch {
-//     res.status(404).json({ error: 'no such contact'});
-//   }
-// });
-
 
 export default router;
