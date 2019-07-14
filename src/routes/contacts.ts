@@ -13,7 +13,7 @@ router.get("/contacts", (_req, res) => {
     if (err) {
       res.status(404).json({ err });
     } else {
-      res.status(200).json(contacts);
+      res.status(200).json(contacts.filter((items: any) => items.isBlocked !== true ));
     }
   });
 });
@@ -23,7 +23,7 @@ router.get("/blocked", (_req, res) => {
     if (err) {
       res.status(404).json({ err });
     } else {
-      res.status(200).json(contacts.filter((items: any) => items.isBlocked === true ))
+      res.status(200).json(contacts.filter((items: any) => items.isBlocked ))
     }
   });
 });
