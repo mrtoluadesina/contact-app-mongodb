@@ -88,16 +88,17 @@ router.post('/contact/:id', (req, res) => {
       res.status(400).send('Contact cannot be blocked')
     } else {
       if (contact.isBlocked) {
-        res.json('Contact cannot be blocked');
+        contact.isBlocked = false;
+      } else {
+        contact.isBlocked = true;
       }
-      contact.isBlocked = true;
 
       contact.save()
             .then(() => {
-              res.status(200).json('Contact blocked successfully');
+              res.status(200).json(`Contact ${contact.isBlocked ? 'blocked' : 'unblocked'} successfully`);
             })
             .catch(() => {
-              res.status(400).json('Could not be blocked');
+              res.status(400).json(`Could not be ${contact.isBlocked ? 'blocked' : 'unblocked'}`);
             })
     }
   })
